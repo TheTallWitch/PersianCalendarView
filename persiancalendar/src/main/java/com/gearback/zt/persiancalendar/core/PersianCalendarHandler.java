@@ -292,7 +292,7 @@ public class PersianCalendarHandler {
         return readStream(mContext.getResources().openRawResource(res));
     }
 
-    private List<CalendarEvent> readEventsFromJSON() {
+    public List<CalendarEvent> readEventsFromJSON() {
         List<CalendarEvent> result = new ArrayList<>();
         String json = readRawResource(R.raw.events);
         try {
