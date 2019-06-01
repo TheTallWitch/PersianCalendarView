@@ -41,7 +41,7 @@ public class PersianCalendarView extends FrameLayout {
 
     private void makeView(Context context, AttributeSet attrs){
         mCalendarHandler = PersianCalendarHandler.getInstance(context);
-        View view = LayoutInflater.from(context).inflate(R.layout.view_calendar, this, true);
+        View view = LayoutInflater.from(context).inflate(R.layout.persian_view, this, true);
         TypedArray typedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.PersianCalendarView, 0, 0);
 
@@ -100,7 +100,7 @@ public class PersianCalendarView extends FrameLayout {
         setBackgroundColor(mCalendarHandler.getColorBackground());
         FragmentManager m = ((AppCompatActivity)getContext()).getSupportFragmentManager();
         m.beginTransaction()
-                .replace(R.id.fragment_holder,
+                .replace(R.id.persianHolder,
                         mCalendarFragment,
                         CalendarFragment.class.getName())
                 .commit();
