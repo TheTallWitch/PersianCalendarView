@@ -309,19 +309,6 @@ public class PersianCalendarHandler {
                 result.add(new CalendarEvent(new PersianDate(-1, month, day), null, null, title, desc, holiday, obit, type));
             }
 
-            JSONArray gregorianCalendar = new JSONObject(json).getJSONArray("gregorianCalendar");
-            for (int i = 0; i < gregorianCalendar.length(); ++i) {
-                JSONObject event = gregorianCalendar.getJSONObject(i);
-                int month = event.getInt("month");
-                int day = event.getInt("day");
-                String title = event.getString("title");
-                String desc = event.getString("description");
-                String type = event.getString("type");
-                boolean holiday = event.getBoolean("holiday");
-                boolean obit = event.getBoolean("obit");
-                result.add(new CalendarEvent(null, new CivilDate(-1, month, day), null, title, desc, holiday, obit, type));
-            }
-
             JSONArray lunarCalendar = new JSONObject(json).getJSONArray("lunarCalendar");
             for (int i = 0; i < lunarCalendar.length(); ++i) {
                 JSONObject event = lunarCalendar.getJSONObject(i);
@@ -333,6 +320,19 @@ public class PersianCalendarHandler {
                 boolean holiday = event.getBoolean("holiday");
                 boolean obit = event.getBoolean("obit");
                 result.add(new CalendarEvent(null, null, new IslamicDate(-1, month, day), title, desc, holiday, obit, type));
+            }
+
+            JSONArray gregorianCalendar = new JSONObject(json).getJSONArray("gregorianCalendar");
+            for (int i = 0; i < gregorianCalendar.length(); ++i) {
+                JSONObject event = gregorianCalendar.getJSONObject(i);
+                int month = event.getInt("month");
+                int day = event.getInt("day");
+                String title = event.getString("title");
+                String desc = event.getString("description");
+                String type = event.getString("type");
+                boolean holiday = event.getBoolean("holiday");
+                boolean obit = event.getBoolean("obit");
+                result.add(new CalendarEvent(null, new CivilDate(-1, month, day), null, title, desc, holiday, obit, type));
             }
 
         } catch (JSONException e) {
